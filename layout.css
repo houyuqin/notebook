@@ -89,14 +89,54 @@ body {
 .font-daxiao span{
   cursor: default;
 }
+
+.fill{
+  width: 660px;
+  height: 650px;
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+.xia {
+  font-size: 14px;
+  background-color: #eee;
+  padding-left: 20px;
+}
+#notepad-dlg-file {
+  position: absolute;
+  top: 20px;
+}
+#notepad-dlg-edit {
+  position: absolute;
+  top: 20px;
+  left: 70px;
+}
+#notepad-dlg-view {
+  position: absolute;
+  top: 20px;
+  left: 190px;
+}
+#notepad-dlg-ooo {
+  position: absolute;
+  top: 20px;
+  left: 130px;
+}
+#notepad-dlg-help {
+  position: absolute;
+  top: 20px;
+  left: 250px;
+}
+
+
+
 .notepad-dlg-font {
   width:438px;
   z-index: 10;
-  position:absolute;
-  top:50px;
-  left:75px;
   background-color:white;
   margin: 0 auto;
+  position:absolute;
+  top: 50px;
+  left: 75px;
 }
 
 .notepad-dlg-font .dialogbox {

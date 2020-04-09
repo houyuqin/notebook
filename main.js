@@ -1,7 +1,7 @@
 $(function(){
   var $menu = $(''
       +'<div id="menu">'
-          +'<div id="files">文件(F)</div>'
+          +'<div id="file">文件(F)</div>'
           +'<div id="edit">编辑(E)</div>'
           +'<div id="ooo">格式(O)</div>'
           +'<div id="view">查看(V)</div>'
@@ -11,7 +11,33 @@ $(function(){
       +'<textarea id="area"></textarea>'
       +'</div>'
       +'');
+
+  var $filei = $(''
+      + '<div id="notepad-dlg-file" class="xia">'
+        + '<span>打开（O）  Ctrl+O</span><br>'
+        + '<span>保存（S）  Ctrl+S</span><br>'
+        + '<span>另存为（A）...</span>'
+        + '<hr>'
+        + '<span>页面设置（U）...</span><br>'
+        + '<span>打印（P）  Ctrl+P</span>'
+        + '<hr>'
+        + '<span>退出（X）</span>'
+      +'</div>'),
+      $editi = $(''
+            + '<div id="notepad-dlg-edit" class="xia">'
+            + '<span>剪切（X）  Ctrl+X</span><br>'
+            + '<span>粘贴（V）  Ctrl+V</span><br>'
+            + '<span>粘贴（V）  Ctrl+V</span><br>'
+            + '<span>粘贴（V）  Ctrl+V</span><br>'
+            + '<span>粘贴（V）  Ctrl+V</span><br>'
+            + '<span>粘贴（V）  Ctrl+V</span><br>'
+            +'</div>'),
+    $viewi = $('<div id="notepad-dlg-view" class="xia"><span>缩放></span><br><span>状态栏</span></div>'),
+    $oooi  = $('<div id="notepad-dlg-ooo" class="xia"><span>字体</span><br><span>自动换行<span></div>')
+      $helpi = $('<div id="notepad-dlg-help" class="xia">更多帮助</div>');
+
   var $select = $(''
+    +'<div class="fill">'
      +'<div class="notepad-dlg-mask notepad-dlg-font">'
       +'<div class="dialogbox notepad-dlgbox">'
           +'<div class="notepad-dlg-titlebar">'
@@ -88,10 +114,16 @@ $(function(){
             +'</div>'
         +'</div>'
      +'</div>'   
+    +'</div>'
     +'');
 
   $('#box').append($menu);
-  var $ooo = $('#ooo');
+  var $ooo = $('#ooo'),
+      $file = $('#file'),
+      $edit = $('#edit'),
+      $view = $('#view'),
+      $help = $('#help');
+
   var $family = $(''),
       $style  = $(''),
       $size   = $(''),
@@ -99,77 +131,125 @@ $(function(){
       style   = '',
       size;
 
-  //弹出弹框
+  $file.click(function(){
+    $('#box').append($filei);
+      $filei.mouseover(function(){
+        console.log(111);
+      });
+      $filei.mouseout(function(){
+        console.log(222);
+        $filei.remove();
+      });
+  });
+  $edit.click(function(){
+    $('#box').append($editi);
+      $editi.mouseover(function(){
+        console.log(111);
+      });
+      $editi.mouseout(function(){
+        console.log(222);
+        $editi.remove();
+      });
+  });
+  $view.click(function(){
+    $('#box').append($viewi);
+    $viewi.mouseover(function(){
+      console.log(111);
+    });
+    $viewi.mouseout(function(){
+      console.log(222);
+      $viewi.remove();
+    });
+  });
+  $help.click(function(){
+    $('#box').append($helpi);
+      $helpi.mouseover(function(){
+        console.log(111);
+      });
+      $helpi.mouseout(function(){
+        console.log(222);
+        $helpi.remove();
+      });
+  });
   $ooo.click(function(){
-    $('#box').append($select); 
-    //关闭弹框
-    $select.find('#cancel').click(function(){
-      $select.remove();
-    });
-    $select.find('.close-btn').click(function(){
-      $select.remove();
-    });
+    $('#box').append($oooi);
+      $oooi.mouseout(function(){
+        console.log(222);
+        $oooi.remove();
+      });
 
-    //确定
-    $select.find('.btn-ok').click(function(){
-      //关闭
-      $select.remove();
-      //字体
-      $('#area').css('font-family',family);
-      //字形
-      if(style === '常规'){
-        $('#area').css('font-style','normal');
-      }else if(style === '斜体'){
-        $('#area').css('font-style','oblique');
-        $('#area').css('font-weight','normal');
-      }else if(style === '粗体'){
-        $('#area').css('font-style','normal');
-        $('#area').css('font-weight','bold');
-      }else{
-        $('#area').css('font-style','oblique');
-        $('#area').css('font-weight','bold');
-      }
-      //大小
-      $('#area').css('font-size',Number(size));
-    });
+    //弹出弹框
+    $oooi.click(function(){
+      $('#box').append($select); 
+      //关闭弹框
+      $select.find('#cancel').click(function(){
+        $select.remove();
+      });
+      $select.find('.close-btn').click(function(){
+        $select.remove();
+      });
 
-    //字体选择
-    $select.find('#family').children(this).click(function(){
-      //family = $select.find('#family').children(this).html();
-      $family = this;
-      family = $family.innerHTML;
-      //选定后上面框中内容变化
-      $select.find('.one').val(family);
-      //设置示例中AaBbYyZz样式
-      $select.find('#egg').css('font-family',family);
-    });
+      //确定
+      $select.find('.btn-ok').click(function(){
+        //关闭
+        $select.remove();
+        //字体
+        $('#area').css('font-family',family);
+        //字形
+        if(style === '常规'){
+          $('#area').css('font-style','normal');
+        }else if(style === '斜体'){
+          $('#area').css('font-style','oblique');
+          $('#area').css('font-weight','normal');
+        }else if(style === '粗体'){
+          $('#area').css('font-style','normal');
+          $('#area').css('font-weight','bold');
+        }else{
+          $('#area').css('font-style','oblique');
+          $('#area').css('font-weight','bold');
+        }
+        //大小
+        $('#area').css('font-size',Number(size));
+      });
 
-    //选择字形
-    $select.find('#style').children(this).click(function(){
-      $style = this;
-      style = $style.innerHTML;
-      $select.find('.two').val(style);
-      if(style === '常规'){
-        $select.find('#egg').css('font-style','normal');
-      }else if(style === '斜体'){
-        $select.find('#egg').css('font-style','oblique');
-        $select.find('#egg').css('font-weight','normal');
-      }else if(style === '粗体'){
-        $select.find('#egg').css('font-style','normal');
-        $select.find('#egg').css('font-weight','bold');
-      }else{
-        $select.find('#egg').css('font-style','oblique');
-        $select.find('#egg').css('font-weight','bold');
-      }
-    });
-    //选择字体大小
-    $select.find('#size').children(this).click(function(){
-      $size = this;
-      size = $size.innerHTML;
-      $select.find('.three').val(size);
-      $select.find('#egg').css('font-size',Number(size));
-    });
+      //字体选择
+      $select.find('#family').children(this).click(function(){
+        //family = $select.find('#family').children(this).html();
+        $family = this;
+        family = $family.innerHTML;
+        //选定后上面框中内容变化
+        $select.find('.one').val(family);
+        //设置示例中AaBbYyZz样式
+        $select.find('#egg').css('font-family',family);
+      });
 
+      //选择字形
+      $select.find('#style').children(this).click(function(){
+        $style = this;
+        style = $style.innerHTML;
+        $select.find('.two').val(style);
+        if(style === '常规'){
+          $select.find('#egg').css('font-style','normal');
+        }else if(style === '斜体'){
+          $select.find('#egg').css('font-style','oblique');
+          $select.find('#egg').css('font-weight','normal');
+        }else if(style === '粗体'){
+          $select.find('#egg').css('font-style','normal');
+          $select.find('#egg').css('font-weight','bold');
+        }else{
+          $select.find('#egg').css('font-style','oblique');
+          $select.find('#egg').css('font-weight','bold');
+        }
+      });
+      //选择字体大小
+      $select.find('#size').children(this).click(function(){
+        $size = this;
+        size = $size.innerHTML;
+        $select.find('.three').val(size);
+        $select.find('#egg').css('font-size',Number(size));
+      });
+
+    });
   
   });
 
