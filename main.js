@@ -253,42 +253,4 @@ $(function(){
   
   });
 
-  //字体选择
-  /*$select.find('#family').children(this).click(function(){
-    //family = $select.find('#family').children(this).html();
-    $family = this;
-    family = $family.innerHTML;
-    //选定后上面框中内容变化
-    $select.find('.one').val(family);
-    //设置示例中AaBbYyZz样式
-    $select.find('#egg').css('font-family',family);
-  });
-
-  //选择字形
-  $select.find('#style').children(this).click(function(){
-    $style = this;
-    style = $style.innerHTML;
-    $select.find('.two').val(style);
-    if(style === '常规'){
-      $select.find('#egg').css('font-style','normal');
-    }else if(style === '斜体'){
-      $select.find('#egg').css('font-style','oblique');
-      $select.find('#egg').css('font-weight','normal');
-    }else if(style === '粗体'){
-      $select.find('#egg').css('font-style','normal');
-      $select.find('#egg').css('font-weight','bold');
-    }else{
-      $select.find('#egg').css('font-style','oblique');
-      $select.find('#egg').css('font-weight','bold');
-    }
-  });
-
-  //选择字体大小
-  $select.find('#size').children(this).click(function(){
-    $size = this;
-    size = $size.innerHTML;
-    $select.find('.three').val(size);
-    $select.find('#egg').css('font-size',Number(size));
-  });*/
- 
 });
