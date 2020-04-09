@@ -8,12 +8,12 @@ body {
   height: 650px;
   margin: 0 auto;
   border: 1px solid #000;
+  position: relative;
 }
 
 #menu {
   width: 600px;
   height:20px;
-  background-color: red;
   border-bottom: 1px solid #000;
 }
 
@@ -89,19 +89,14 @@ body {
 .font-daxiao span{
   cursor: default;
 }
-
-
-
-
-
-
 .notepad-dlg-font {
   width:438px;
   z-index: 10;
   position:absolute;
   top:50px;
-  left:350px;
+  left:75px;
   background-color:white;
+  margin: 0 auto;
 }
 
 .notepad-dlg-font .dialogbox {
